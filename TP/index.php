@@ -8,12 +8,12 @@
 <div style="background: black; color: white; text-align: center; width: 100%; padding 7px; font-family: comic sans ms;"><h2>Voter pour votre fast-food préféré.</h2></div>
 <div class="container">
     <form action="index.php" method="post" align="center">
-        <img src="images/Burger King.jpg" width="250" height="200"/>
+        <img src="images/dominos.png" width="250" height="200"/>
         <img src="images/KFC.jpg" width="250" height="200"/>
         <img src="images/McDo.jpg" width="250" height="200"/>
         <img src="images/Quick.jpg" width="250" height="200"/>
 
-        <input type="submit" name="Burger King" value="Voter pour Burger King"/>
+        <input type="submit" name="Dominos" value="Voter pour Dominos"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" name="KFC" value="Voter pour KFC"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -27,16 +27,16 @@
 
     $con = mysqli_connect("localhost","root","","voting_online");
 
-    if(isset($_POST['Burger King']))
+    if(isset($_POST['Dominos']))
     {
-        $vote_Burger_King = "update votes set Burger King=Burger King+1";
-		$run_Burger_King = mysqli_query($con,$vote_Burger_King);
+        $vote_Dominos = "update votes set Dominos=Dominos+1";
+		$run_Dominos = mysqli_query($con,$vote_Dominos);
 
-	if($run_Burger_King) {
-        echo "<h2 align='center'> Votre vote a été compté pour Burger King !</h2>";
-        echo "<h2 align='center'><a href='index.php?results'>Voir Résultats</a></h2	>";
+        if($run_Dominos) {
+            echo "<h2 align='center'> Votre vote a été compté pour Dominos !</h2>";
+            echo "<h2 align='center'><a href='index.php?results'>Voir Résultats</a></h2	>";
+        }
     }
-}
 
 
     if(isset($_POST['KFC']))
@@ -51,7 +51,7 @@
     }
 
 
-    if(isset($_POST['McDO']))
+    if(isset($_POST['McDo']))
     {
         $vote_McDo = "update votes set McDo=McDo+1";
         $run_McDo = mysqli_query($con,$vote_McDo);
@@ -80,14 +80,14 @@
         $run_votes = mysqli_query($con, $get_votes);
         $row_votes = mysqli_fetch_array($run_votes);
 
-        $Burger_King = $row_votes['Burger King'];
-			$KFC = $row_votes['KFC'];
-			$McDo = $row_votes['McDo'];
-			$Quick = $row_votes['Quick'];
+                $Dominos = $row_votes['Dominos'];
+                $KFC = $row_votes['KFC'];
+                $McDo = $row_votes['McDo'];
+                $Quick = $row_votes['Quick'];
 
-	$count = $Burger_King+$KFC+$McDo+$Quick;
+	        $count = $Dominos+$KFC+$McDo+$Quick;
 
-	$per_Burger_King = round($Burger_King*100/$count) . "%";
+	$per_Dominos = round($Dominos*100/$count) . "%";
 	$per_KFC = round($KFC*100/$count) . "%";
 	$per_McDo = round($McDo*100/$count) . "%";
 	$per_Quick = round($Quick*100/$count) . "%";
@@ -97,7 +97,7 @@
 		<center>
 			<h2>Mise à jour des résultats:</h2>
 		<p style='background: black; color: white; padding:10px; width=500px;'>
-			<b>Burger King: </b> $Burger_King ($per_Burger_King)
+			<b>Dominos: </b> $Dominos ($per_Dominos)
 		</p>
 		
 		<p style='background: black; color: white; padding:10px; width=500px;'>
