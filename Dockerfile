@@ -1,4 +1,4 @@
 FROM php:7.2-cli
-COPY . /xampp/htdocs/VotingOnline
-WORKDIR /xampp/htdocs/VotingOnline
+COPY . https://github.com/Sp3ctre44/TPKubernetes/tree/master/TP
+WORKDIR https://github.com/Sp3ctre44/TPKubernetes/tree/master/TP
 CMD [ "php", "./index.php" ]
